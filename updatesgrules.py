@@ -2,10 +2,7 @@ import boto.ec2
 print "enter sg name in which u want to add and delete rules\n"
 grp=raw_input()
 
-#3.0       
-conn=boto.ec2.connect_to_region("us-east-1", aws_access_key_id='',aws_secret_access_key='')#enter ur credentials
-#2.0 
-#conn=boto.ec2.connect_to_region("us-east-1", aws_access_key_id='',aws_secret_access_key='')
+conn=boto.ec2.connect_to_region("us-east-1", aws_access_key_id='',aws_secret_access_key='')
 
 
 #find list of sg where ssh 22 is open for 0.0.0.0/0
