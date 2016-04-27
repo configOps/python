@@ -1,0 +1,2 @@
+download boto ( git clone https://github.com/boto/boto.git)
+install boto (cd boto , python setup.py install)

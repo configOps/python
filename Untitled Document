@@ -1,0 +1,3 @@
+while read ip; do
+       nmap $ip  > $result.txt
+done < "Output.txt"

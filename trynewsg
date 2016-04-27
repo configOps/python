@@ -1,0 +1,38 @@
+# check how many SGs are attached to instance
+    group_nums = len(i.instances[0].groups)
+    print "######################\n"
+    print "InstanceID: %s\n" % i.instances[0]
+    print "Number of SGs attached: %s\n" % group_nums
+# go through each SG
+    for z in range(group_nums):
+# find id for each SG
+        group_id = i.instances[0].groups[z].id
+        sg_name = conn.get_all_security_groups(group_ids=group_id)[0]
+        # print SG name
+        print "%s\n" % sg_name
+# describe rules for each SG
+        sec_rules = conn.get_all_security_groups(group_ids=group_id)[0].rules
+        print sec_rules
+# calculate number of rules
+        rule_nums = len(sec_rules)
+
+# print SG Ingress rules
+        print "Ingress Rules:\n\n"
+        for g in range(rule_nums):
+            ingressportprotocol=conn.get_all_security_groups(group_ids=group_id)[0].rules[g]
+            ingressdestination=conn.get_all_security_groups(group_ids=group_id)[0].rules[g].grants
+            print ingressportprotocol
+            print ingressdestination
+# number of Egress rules
+        egress_rules = conn.get_all_security_groups(group_ids=group_id)[0].rules_egress
+        number_of_egress = len(egress_rules)
+        print "Egress Rules:\n\n"
+        for k in range(number_of_egress):
+            egressportprotocol=conn.get_all_security_groups(group_ids=group_id)[0].rules_egress[k]
+            egressdestination=conn.get_all_security_groups(group_ids=group_id)[0].rules_egress[k].grants
+            print egressportprotocol
+            print egressdestination
+		#data=[group_id,sg_name,rule_nums,ingressportprotocol,ingressdestination]
+        break
+      
+		
